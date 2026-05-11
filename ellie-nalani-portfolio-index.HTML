@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ellie Nalani — Customer Success Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;cursor:none}
+
+:root{
+  --ink:#0a0a0a;
+  --paper:#f5f2ec;
+  --paper2:#ede9e0;
+  --accent:#e8460a;
+  --accent2:#ff6b35;
+  --gold:#c8961e;
+  --white:#ffffff;
+  --mid:#4a4540;
+  --muted:#8a8278;
+  --border:#d4cfc6;
+  --card:#ffffff;
+}
+
+/* custom cursor */
+.cursor{position:fixed;width:12px;height:12px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.2s,height 0.2s;mix-blend-mode:multiply}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.15s ease-out,width 0.3s,height 0.3s,opacity 0.3s;opacity:0.5}
+body:hover .cursor-ring{opacity:1}
+
+body{
+  font-family:'Epilogue',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:60px;
+  background:rgba(10,10,10,0.97);
+  border-bottom:1px solid rgba(232,70,10,0.2);
+}
+.nav-name{font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:var(--white);letter-spacing:0.04em}
+.nav-links{display:flex;gap:36px}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent2)}
+.nav-status{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.4)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:var(--ink);
+  padding:120px 56px 80px;
+  position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center;
+}
+.hero-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(232,70,10,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,70,10,0.04) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+}
+
+.hero-left{position:relative;z-index:2}
+.hero-issue{
+  font-family:'JetBrains Mono',monospace;font-size:0.72rem;
+  color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;
+  margin-bottom:28px;display:flex;align-items:center;gap:16px;
+}
+.hero-issue::after{content:'';flex:1;height:1px;background:rgba(232,70,10,0.3);max-width:80px}
+
+h1{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(3rem,6vw,5.5rem);line-height:0.95;
+  color:var(--white);margin-bottom:4px;
+  letter-spacing:-0.02em;
+}
+h1 .accent{color:var(--accent);display:block}
+.hero-role{
+  font-family:'Epilogue',sans-serif;font-size:1.05rem;
+  color:rgba(255,255,255,0.4);margin:24px 0 36px;
+  font-weight:300;letter-spacing:0.04em;
+}
+
+.hero-deck{
+  font-size:1.05rem;color:rgba(255,255,255,0.65);
+  line-height:1.8;max-width:540px;margin-bottom:48px;
+  font-weight:300;
+}
+.hero-deck strong{color:var(--white);font-weight:600}
+
+.hero-numbers{
+  display:flex;gap:40px;margin-bottom:48px;
+}
+.hn-item{}
+.hn-val{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:2.2rem;color:var(--accent2);
+  display:block;line-height:1;
+}
+.hn-label{font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-family:'JetBrains Mono',monospace}
+
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  padding:13px 28px;border-radius:6px;font-size:0.85rem;
+  font-weight:600;text-decoration:none;letter-spacing:0.04em;
+  transition:all 0.2s;cursor:none;border:none;font-family:'Syne',sans-serif;
+}
+.btn-fill{background:var(--accent);color:white}
+.btn-fill:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.15)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* hero right — live metrics card */
+.hero-right{position:relative;z-index:2}
+.metrics-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(232,70,10,0.2);
+  border-radius:16px;padding:32px 28px;
+}
+.mc-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:28px;
+}
+.mc-title{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase}
+.mc-live{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#22c55e;display:flex;align-items:center;gap:6px}
+
+.gauge-row{margin-bottom:20px}
+.gauge-top{display:flex;justify-content:space-between;margin-bottom:6px}
+.gauge-label{font-size:0.82rem;color:rgba(255,255,255,0.7)}
+.gauge-val{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent2)}
+.gauge-track{height:4px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
+.gauge-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:width 1.6s cubic-bezier(0.4,0,0.2,1)}
+
+.mc-divider{height:1px;background:rgba(255,255,255,0.06);margin:24px 0}
+.tool-label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:12px}
+.tool-tags{display:flex;flex-wrap:wrap;gap:7px}
+.tool-tag{
+  font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+  color:var(--accent2);background:rgba(232,70,10,0.1);
+  border:1px solid rgba(232,70,10,0.25);
+  padding:4px 10px;border-radius:4px;
+}
+
+/* ── SECTIONS ── */
+section{padding:96px 56px}
+.section-inner{max-width:1160px;margin:0 auto}
+
+.section-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px;display:block;
+}
+h2{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2rem,3.5vw,3rem);color:var(--ink);
+  line-height:1.1;margin-bottom:16px;letter-spacing:-0.02em;
+}
+.section-sub{font-size:1rem;color:var(--muted);line-height:1.75;max-width:560px;margin-bottom:64px}
+
+/* ── CASE STUDIES ── */
+#cases{background:var(--paper)}
+
+.case-tabs{display:flex;gap:4px;margin-bottom:48px;background:var(--paper2);padding:4px;border-radius:10px;width:fit-content;flex-wrap:wrap}
+.case-tab{
+  padding:10px 22px;border-radius:7px;border:none;background:transparent;
+  font-family:'Syne',sans-serif;font-weight:600;font-size:0.82rem;
+  color:var(--muted);cursor:none;transition:all 0.2s;letter-spacing:0.02em;
+}
+.case-tab.active{background:var(--ink);color:var(--white)}
+.case-tab:hover:not(.active){color:var(--ink)}
+
+.case-panels{}
+.case-panel{display:none}
+.case-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+
+.case-story{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 36px}
+.case-story-label{
+  font-family:'JetBrains Mono',monospace;font-size:0.68rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;display:block;
+}
+.case-story h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.35rem;color:var(--ink);margin-bottom:16px;line-height:1.3}
+.case-story p{font-size:0.92rem;color:var(--mid);line-height:1.8;margin-bottom:20px}
+.case-story p:last-child{margin-bottom:0}
+
+.case-meta{display:flex;flex-direction:column;gap:20px}
+
+.meta-block{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 24px}
+.meta-block-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
+.meta-block h4{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:10px}
+
+.skill-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.skill-chip{
+  font-size:0.76rem;padding:5px 12px;border-radius:100px;
+  background:var(--paper);border:1px solid var(--border);
+  color:var(--mid);font-weight:500;
+}
+.skill-chip.highlight{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+.result-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.result-list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:0.88rem;color:var(--mid);line-height:1.6;
+}
+.result-list li::before{content:'✓';color:var(--accent);font-weight:700;margin-top:1px;flex-shrink:0;font-size:0.9rem}
+
+.result-stat{
+  display:inline-block;
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:1.8rem;color:var(--accent);line-height:1;
+  margin-bottom:4px;
+}
+.result-stat-label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-family:'JetBrains Mono',monospace}
+
+.stat-row{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+.stat-box{text-align:center}
+
+/* ── SKILLS GRID ── */
+#skills{background:var(--ink)}
+#skills h2{color:var(--white)}
+#skills .section-sub{color:rgba(255,255,255,0.4)}
+#skills .section-eyebrow{color:var(--accent2)}
+
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.04)}
+.skill-card{
+  background:var(--ink);
+  padding:36px 28px;
+  transition:background 0.2s;
+  position:relative;overflow:hidden;
+}
+.skill-card::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:0;
+  background:var(--accent);transition:height 0.3s;
+}
+.skill-card:hover{background:rgba(255,255,255,0.03)}
+.skill-card:hover::before{height:100%}
+.skill-icon{font-size:1.8rem;margin-bottom:16px;display:block}
+.skill-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:10px}
+.skill-card p{font-size:0.84rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:16px}
+.skill-card-tools{display:flex;flex-wrap:wrap;gap:6px}
+.sct{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--accent2);background:rgba(232,70,10,0.1);border:1px solid rgba(232,70,10,0.2);padding:3px 8px;border-radius:3px}
+
+/* ── SCENARIOS / TIMELINE ── */
+#scenarios{background:var(--paper2)}
+
+.scenario-feed{display:flex;flex-direction:column;gap:0;position:relative}
+.scenario-feed::before{
+  content:'';position:absolute;left:23px;top:12px;bottom:12px;
+  width:2px;background:linear-gradient(to bottom,var(--accent),rgba(232,70,10,0.1));
+}
+
+.scenario-item{
+  display:flex;gap:40px;padding:0 0 56px;
+  opacity:0;transform:translateX(-20px);
+  transition:opacity 0.6s,transform 0.6s;
+}
+.scenario-item.visible{opacity:1;transform:none}
+
+.scenario-dot{
+  width:48px;height:48px;flex-shrink:0;
+  background:var(--ink);border:2px solid var(--accent);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;z-index:1;margin-top:4px;
+}
+
+.scenario-card{
+  flex:1;background:var(--card);
+  border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;
+}
+.scenario-card-top{
+  padding:28px 28px 0;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  flex-wrap:wrap;gap:12px;
+}
+.scenario-company{
+  font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+  color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;
+}
+.scenario-badge{
+  font-family:'JetBrains Mono',monospace;font-size:0.68rem;
+  background:var(--ink);color:var(--white);
+  padding:4px 12px;border-radius:100px;letter-spacing:0.08em;
+}
+.scenario-card h3{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:1.15rem;color:var(--ink);
+  padding:12px 28px 0;line-height:1.35;
+}
+
+.scenario-body{padding:16px 28px 24px}
+.scenario-body p{font-size:0.9rem;color:var(--mid);line-height:1.75;margin-bottom:16px}
+
+.scenario-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-top:1px solid var(--border)}
+.scenario-col{background:var(--card);padding:20px 22px}
+.sc-label{font-family:'JetBrains Mono',monospace;font-size:0.63rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
+.sc-val{font-size:0.85rem;color:var(--ink);font-weight:500;line-height:1.5}
+.sc-val strong{color:var(--accent);font-family:'Syne',sans-serif;font-weight:700}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--paper)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.t-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:32px 26px;
+  transition:transform 0.25s,box-shadow 0.25s;
+  position:relative;
+}
+.t-card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.08)}
+.t-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border-radius:0 0 14px 14px;
+  transform:scaleX(0);transition:transform 0.3s;
+}
+.t-card:hover::after{transform:scaleX(1)}
+.t-stars{color:var(--gold);font-size:0.85rem;margin-bottom:16px;letter-spacing:2px}
+.t-text{font-size:0.9rem;color:var(--mid);line-height:1.8;margin-bottom:22px;font-style:italic}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:800;color:white;font-size:0.78rem;
+}
+.t-name{font-weight:600;font-size:0.85rem;color:var(--ink)}
+.t-role{font-size:0.75rem;color:var(--muted)}
+
+/* ── CONTACT ── */
+#contact{
+  background:var(--ink);
+  padding:96px 56px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+#contact::before{
+  content:'OPEN\AFOR\AHIRE';white-space:pre;
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:18vw;line-height:0.85;
+  color:rgba(255,255,255,0.02);
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;letter-spacing:-0.04em;
+  width:100%;text-align:center;
+}
+#contact .section-eyebrow{color:var(--accent2)}
+#contact h2{color:var(--white)}
+#contact .section-sub{color:rgba(255,255,255,0.4);margin:0 auto 48px}
+
+.contact-box{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(232,70,10,0.2);
+  border-radius:20px;padding:48px;
+  max-width:620px;margin:0 auto;
+  position:relative;z-index:2;
+}
+.c-items{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.c-item{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:10px;text-align:left;
+}
+.c-icon{font-size:1.1rem}
+.c-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.c-value{font-size:0.95rem;color:var(--white);font-weight:500;margin-top:2px}
+.avail{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);color:#4ade80;padding:10px 24px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.08em}
+
+footer{background:#050505;padding:24px 56px;display:flex;align-items:center;justify-content:space-between}
+.footer-name{font-family:'Syne',sans-serif;font-weight:800;font-size:0.85rem;color:rgba(255,255,255,0.3)}
+footer p{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.2)}
+
+/* animations */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .hero{grid-template-columns:1fr;padding:100px 28px 60px;gap:48px}
+  .hero-right{display:none}
+  section{padding:72px 28px}
+  .case-panel.active{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .scenario-row{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:20px}
+}
+@media(max-width:540px){
+  .skills-grid{grid-template-columns:1fr}
+  .hero-numbers{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Kung'u Ellie Nalani</div>
+  <div class="nav-links">
+    <a href="#cases">Case Studies</a>
+    <a href="#skills">Skills</a>
+    <a href="#scenarios">Scenarios</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-status"><div class="status-dot"></div>Available Now</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-left">
+    <div class="hero-issue">Customer Success Portfolio &nbsp;·&nbsp; 2025</div>
+    <h1>Ellie<span class="accent">Nalani.</span></h1>
+    <p class="hero-role">Customer Success · Retention · Technical Support · Nairobi</p>
+    <p class="hero-deck">
+      I don't manage customers. I <strong>own their outcomes.</strong><br>
+      High-volume environments, complex escalations, remote async work — I've done all three and the satisfaction scores stayed high. I'm the person who <strong>solves the problem in the room,</strong> not the one who schedules a follow-up to find someone who can.
+    </p>
+    <div class="hero-numbers">
+      <div class="hn-item"><span class="hn-val">200+</span><span class="hn-label">Daily clients</span></div>
+      <div class="hn-item"><span class="hn-val">4.8★</span><span class="hn-label">Avg satisfaction</span></div>
+      <div class="hn-item"><span class="hn-val">100%</span><span class="hn-label">Cash accuracy</span></div>
+      <div class="hn-item"><span class="hn-val">0</span><span class="hn-label">Churns on watch</span></div>
+    </div>
+    <div class="cta-row">
+      <a href="#cases" class="btn btn-fill">View Case Studies</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="metrics-card">
+      <div class="mc-header">
+        <span class="mc-title">Performance Metrics</span>
+        <span class="mc-live"><div class="status-dot" style="width:6px;height:6px"></div>Live</span>
+      </div>
+      <div class="gauge-row"><div class="gauge-top"><span class="gauge-label">Complaint Resolution Rate</span><span class="gauge-val">96%</span></div><div class="gauge-track"><div class="gauge-fill" data-w="96"></div></div></div>
+      <div class="gauge-row"><div class="gauge-top"><span class="gauge-label">Client Retention</span><span class="gauge-val">100%</span></div><div class="gauge-track"><div class="gauge-fill" data-w="100"></div></div></div>
+      <div class="gauge-row"><div class="gauge-top"><span class="gauge-label">SLA Adherence</span><span class="gauge-val">95%</span></div><div class="gauge-track"><div class="gauge-fill" data-w="95"></div></div></div>
+      <div class="gauge-row"><div class="gauge-top"><span class="gauge-label">First Contact Resolution</span><span class="gauge-val">88%</span></div><div class="gauge-track"><div class="gauge-fill" data-w="88"></div></div></div>
+      <div class="gauge-row"><div class="gauge-top"><span class="gauge-label">Response Time vs Target</span><span class="gauge-val">+47% faster</span></div><div class="gauge-track"><div class="gauge-fill" data-w="92"></div></div></div>
+      <div class="mc-divider"></div>
+      <div class="tool-label">Tool Stack</div>
+      <div class="tool-tags">
+        <span class="tool-tag">Zendesk</span><span class="tool-tag">Freshdesk</span><span class="tool-tag">Mixpanel</span><span class="tool-tag">GA4</span><span class="tool-tag">Slack</span><span class="tool-tag">Trello</span><span class="tool-tag">M-Pesa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">Case Studies</span>
+    <h2 class="reveal">Real situations.<br>Real results.</h2>
+    <p class="section-sub reveal">Five scenarios from actual work — the task, the skills deployed, the tools used, and what happened.</p>
+
+    <div class="case-tabs reveal">
+      <button class="case-tab active" onclick="switchCase(0)">Churn Rescue</button>
+      <button class="case-tab" onclick="switchCase(1)">Escalation Storm</button>
+      <button class="case-tab" onclick="switchCase(2)">Queue Overload</button>
+      <button class="case-tab" onclick="switchCase(3)">Pricing Dispute</button>
+      <button class="case-tab" onclick="switchCase(4)">Health Monitoring</button>
+    </div>
+
+    <!-- CASE 0: Churn Rescue -->
+    <div class="case-panel active" id="case-0">
+      <div class="case-story">
+        <span class="case-story-label">Case Study 01 · Retention</span>
+        <h3>Rescuing a high-value client who had quietly stopped engaging</h3>
+        <p>A client managing multiple bookings through the platform had gone silent for three weeks — no responses, no new orders. In most CS setups, this gets flagged too late or not at all.</p>
+        <p>I noticed the drop in activity during a routine check of engagement data in Mixpanel. Instead of waiting for a cancellation notice, I reached out proactively — acknowledged the silence, asked the right questions, and uncovered that they'd had a poor service experience that hadn't been formally raised.</p>
+        <p>I owned the complaint end-to-end: investigated what went wrong, communicated clearly about the fix, followed up twice over the next two weeks, and got them back to full engagement within 30 days. No discount offered. Just accountability and consistency.</p>
+      </div>
+      <div class="case-meta">
+        <div class="meta-block">
+          <span class="meta-block-label">Skills Used</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">Proactive retention</span>
+            <span class="skill-chip highlight">Usage data monitoring</span>
+            <span class="skill-chip highlight">Complaint ownership</span>
+            <span class="skill-chip">Relationship management</span>
+            <span class="skill-chip">Written communication</span>
+            <span class="skill-chip">Follow-through</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Tools</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">Mixpanel</span>
+            <span class="skill-chip highlight">Freshdesk</span>
+            <span class="skill-chip">Gmail</span>
+            <span class="skill-chip">Slack</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Results</span>
+          <ul class="result-list">
+            <li>Client re-engaged within 30 days — no churn</li>
+            <li>Complaint resolved without escalation to management</li>
+            <li>Client returned to full usage and rated interaction 5/5</li>
+            <li>Process flag raised to prevent same failure recurring</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 1: Escalation Storm -->
+    <div class="case-panel" id="case-1">
+      <div class="case-story">
+        <span class="case-story-label">Case Study 02 · Escalation</span>
+        <h3>Managing a wave of simultaneous complaints during a service outage</h3>
+        <p>On one of the busiest days at MM Studio, a payment processing issue caused multiple client transactions to fail at the till. Within 20 minutes, I had 15+ clients raising issues simultaneously — in-person and via WhatsApp — while new walk-ins continued to arrive.</p>
+        <p>I made three fast decisions: communicate the issue transparently rather than stall, triage by urgency (clients who'd already paid vs those mid-transaction), and create a manual log to ensure no one was missed once systems recovered.</p>
+        <p>I handled every interaction without calling for management backup. Resolved all cases by end of day. Not one client left without a confirmed outcome.</p>
+      </div>
+      <div class="case-meta">
+        <div class="meta-block">
+          <span class="meta-block-label">Skills Used</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">High-volume triage</span>
+            <span class="skill-chip highlight">Crisis communication</span>
+            <span class="skill-chip highlight">Escalation management</span>
+            <span class="skill-chip">Prioritisation under pressure</span>
+            <span class="skill-chip">Manual process design</span>
+            <span class="skill-chip">Composure</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Tools</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">WhatsApp Business</span>
+            <span class="skill-chip highlight">M-Pesa dashboard</span>
+            <span class="skill-chip">Google Sheets</span>
+            <span class="skill-chip">Manual logging</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Results</span>
+          <ul class="result-list">
+            <li>All 15+ cases resolved same day — zero left open overnight</li>
+            <li>Zero escalations to management required</li>
+            <li>No clients left without a confirmed outcome</li>
+            <li>Satisfaction maintained despite service failure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2: Queue Overload -->
+    <div class="case-panel" id="case-2">
+      <div class="case-story">
+        <span class="case-story-label">Case Study 03 · Operations</span>
+        <h3>Clearing a 3-day ticket backlog inherited from an unresponsive queue</h3>
+        <p>While managing remote support freelance work, I onboarded a new client mid-project who had a Zendesk queue that hadn't been touched in 72 hours. Over 40 open tickets, ranging from simple account questions to unresolved order disputes and one potentially churning enterprise-level user.</p>
+        <p>I triaged by impact: revenue risk first, then time-sensitivity, then routine. I built a rapid-response template system for the repeating issues (which were 60% of the queue) and gave every high-risk ticket a personal response within 2 hours of starting.</p>
+        <p>Queue cleared in 11 hours across two days. The at-risk enterprise user was retained. Three recurring issue types were flagged to the product team as systemic problems.</p>
+      </div>
+      <div class="case-meta">
+        <div class="meta-block">
+          <span class="meta-block-label">Skills Used</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">Ticket triage by impact</span>
+            <span class="skill-chip highlight">Template design</span>
+            <span class="skill-chip highlight">Risk identification</span>
+            <span class="skill-chip">Async communication</span>
+            <span class="skill-chip">Feedback routing</span>
+            <span class="skill-chip">Speed + quality balance</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Tools</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">Zendesk</span>
+            <span class="skill-chip highlight">Slack</span>
+            <span class="skill-chip">Trello</span>
+            <span class="skill-chip">Google Docs</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Results</span>
+          <ul class="result-list">
+            <li>40+ ticket backlog cleared in 11 hours</li>
+            <li>At-risk enterprise user retained</li>
+            <li>60% of queue handled via efficient templated responses</li>
+            <li>3 product issues flagged — 2 actioned within a week</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 3: Pricing Dispute -->
+    <div class="case-panel" id="case-3">
+      <div class="case-story">
+        <span class="case-story-label">Case Study 04 · Commercial</span>
+        <h3>Resolving a pricing dispute that was two days from becoming a lost client</h3>
+        <p>A client at MM Studio had been charged incorrectly for a service package — a billing error on our side. They came in frustrated, had already told two other clients about the issue, and had decided they weren't coming back.</p>
+        <p>I didn't deflect or make promises I couldn't keep. I pulled the transaction history on the spot, confirmed the error immediately, and owned the mistake without hedging. I offered a direct resolution — a credit on their account plus a complimentary follow-up — and processed it before they left.</p>
+        <p>They returned the following week. More importantly, they mentioned the experience positively to the same clients they'd previously complained to.</p>
+      </div>
+      <div class="case-meta">
+        <div class="meta-block">
+          <span class="meta-block-label">Skills Used</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">Billing dispute resolution</span>
+            <span class="skill-chip highlight">De-escalation</span>
+            <span class="skill-chip highlight">Commercial judgment</span>
+            <span class="skill-chip">Transaction verification</span>
+            <span class="skill-chip">Verbal communication</span>
+            <span class="skill-chip">Accountability</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Tools</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">M-Pesa transaction history</span>
+            <span class="skill-chip highlight">Google Sheets</span>
+            <span class="skill-chip">Card terminal records</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Results</span>
+          <ul class="result-list">
+            <li>Client retained — returned within 7 days</li>
+            <li>Negative word-of-mouth converted to positive referral</li>
+            <li>Resolved in under 20 minutes with no management involvement</li>
+            <li>Billing error type flagged to prevent future occurrence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 4: Health Monitoring -->
+    <div class="case-panel" id="case-4">
+      <div class="case-story">
+        <span class="case-story-label">Case Study 05 · Analytics</span>
+        <h3>Using product analytics to catch a declining account before it raised a ticket</h3>
+        <p>While managing a remote client's support operations, I set up a habit of reviewing Mixpanel engagement data weekly — not just responding to incoming issues. I noticed one account's session frequency had dropped by 60% over three weeks, despite no support tickets being raised.</p>
+        <p>I reached out with a check-in framed around their specific use case — not a generic "how are things?" message. They revealed they'd encountered a configuration problem they hadn't bothered to report, assuming it would require too much back-and-forth to fix.</p>
+        <p>I walked them through the fix over Slack in one conversation. They were back to full usage within 24 hours. No ticket. No escalation. Just proactive attention to data.</p>
+      </div>
+      <div class="case-meta">
+        <div class="meta-block">
+          <span class="meta-block-label">Skills Used</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">Health monitoring</span>
+            <span class="skill-chip highlight">Proactive outreach</span>
+            <span class="skill-chip highlight">Configuration support</span>
+            <span class="skill-chip">Data interpretation</span>
+            <span class="skill-chip">Async troubleshooting</span>
+            <span class="skill-chip">Personalised communication</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Tools</span>
+          <div class="skill-chips">
+            <span class="skill-chip highlight">Mixpanel</span>
+            <span class="skill-chip highlight">Slack</span>
+            <span class="skill-chip">Freshdesk</span>
+            <span class="skill-chip">Google Analytics 4</span>
+          </div>
+        </div>
+        <div class="meta-block">
+          <span class="meta-block-label">Results</span>
+          <ul class="result-list">
+            <li>Silent churn prevented — zero revenue loss</li>
+            <li>Issue resolved in a single Slack conversation</li>
+            <li>Client back to full usage within 24 hours</li>
+            <li>No ticket raised, no management loop — end-to-end owned</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">Capabilities</span>
+    <h2 class="reveal">The full toolkit.</h2>
+    <p class="section-sub reveal">Not a list of buzzwords. Skills I've used in real situations with real stakes.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal reveal-delay-1">
+        <span class="skill-icon">🎯</span>
+        <h3>Customer Retention</h3>
+        <p>Identifying at-risk accounts before they raise a flag. Proactive outreach. Owning the relationship when things go wrong.</p>
+        <div class="skill-card-tools"><span class="sct">Mixpanel</span><span class="sct">GA4</span><span class="sct">Health scoring</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <span class="skill-icon">🔧</span>
+        <h3>Troubleshooting</h3>
+        <p>First-line investigation across config issues, product bugs, transaction problems, and service failures — solved, not forwarded.</p>
+        <div class="skill-card-tools"><span class="sct">Zendesk</span><span class="sct">Freshdesk</span><span class="sct">Async debug</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <span class="skill-icon">📊</span>
+        <h3>Product Analytics</h3>
+        <p>Reading engagement data, spotting usage drops, interpreting funnel behaviour — translating numbers into customer conversations.</p>
+        <div class="skill-card-tools"><span class="sct">Mixpanel</span><span class="sct">GA4</span><span class="sct">Funnels</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <span class="skill-icon">⚡</span>
+        <h3>High-Volume Support</h3>
+        <p>200+ daily interactions without quality drop. Triage systems, template design, priority judgment under real pressure.</p>
+        <div class="skill-card-tools"><span class="sct">Zendesk</span><span class="sct">WhatsApp Business</span><span class="sct">Triage</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <span class="skill-icon">💬</span>
+        <h3>Escalation Management</h3>
+        <p>Multi-channel escalations handled end-to-end. Pricing disputes, service failures, billing errors — resolved without kicking upstairs.</p>
+        <div class="skill-card-tools"><span class="sct">De-escalation</span><span class="sct">Commercial judgment</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <span class="skill-icon">🌐</span>
+        <h3>Remote Async Work</h3>
+        <p>3 concurrent remote clients managed solo. SLA adherence, CRM hygiene, and professional communication across time zones.</p>
+        <div class="skill-card-tools"><span class="sct">Slack</span><span class="sct">Trello</span><span class="sct">Google Meet</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS TIMELINE -->
+<section id="scenarios">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">Day-to-Day</span>
+    <h2 class="reveal">How I work<br>in practice.</h2>
+    <p class="section-sub reveal">The unglamorous, high-value daily work that actually keeps customers — and revenue — from walking out the door.</p>
+
+    <div class="scenario-feed">
+
+      <div class="scenario-item">
+        <div class="scenario-dot">🌅</div>
+        <div class="scenario-card">
+          <div class="scenario-card-top">
+            <span class="scenario-company">Remote Client Work · Zendesk</span>
+            <span class="scenario-badge">08:00 — Queue Review</span>
+          </div>
+          <h3>Starting the day: triage 23 overnight tickets before 10am</h3>
+          <div class="scenario-body">
+            <p>Every morning I opened the Zendesk queue and categorised by impact before touching a single ticket. Revenue-risk tickets first, then SLA-expiring, then routine. 60% of overnight tickets got templated responses within 45 minutes. The remaining 40% got personal, context-specific replies.</p>
+          </div>
+          <div class="scenario-row">
+            <div class="scenario-col"><span class="sc-label">Skill</span><span class="sc-val">Impact-first triage</span></div>
+            <div class="scenario-col"><span class="sc-label">Tool</span><span class="sc-val"><strong>Zendesk</strong> · templates</span></div>
+            <div class="scenario-col"><span class="sc-label">Result</span><span class="sc-val">Queue cleared by <strong>10am daily</strong></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-item">
+        <div class="scenario-dot">📉</div>
+        <div class="scenario-card">
+          <div class="scenario-card-top">
+            <span class="scenario-company">Remote Client · Mixpanel</span>
+            <span class="scenario-badge">Weekly · Health Check</span>
+          </div>
+          <h3>Spotting a silent account drop before it became a churn</h3>
+          <div class="scenario-body">
+            <p>Weekly Mixpanel review flagged a 60% session drop on one account with zero support tickets raised. I reached out with a personalised message referencing their specific use case. Found a config issue they'd given up on reporting. Fixed it on Slack in one thread.</p>
+          </div>
+          <div class="scenario-row">
+            <div class="scenario-col"><span class="sc-label">Skill</span><span class="sc-val">Proactive health monitoring</span></div>
+            <div class="scenario-col"><span class="sc-label">Tool</span><span class="sc-val"><strong>Mixpanel</strong> · Slack</span></div>
+            <div class="scenario-col"><span class="sc-label">Result</span><span class="sc-val"><strong>Churn prevented</strong>, 24hr fix</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-item">
+        <div class="scenario-dot">🔥</div>
+        <div class="scenario-card">
+          <div class="scenario-card-top">
+            <span class="scenario-company">MM Studio · Walk-in</span>
+            <span class="scenario-badge">Live · Peak Hour</span>
+          </div>
+          <h3>Handling a billing dispute in front of a queue of waiting clients</h3>
+          <div class="scenario-body">
+            <p>Client came in loudly disputing a charge with a queue of 12 people watching. I didn't flinch. Pulled the transaction record, confirmed the error within 90 seconds, owned it immediately, issued a credit and a complimentary service, and processed it before they finished explaining. The queue saw everything.</p>
+          </div>
+          <div class="scenario-row">
+            <div class="scenario-col"><span class="sc-label">Skill</span><span class="sc-val">Public de-escalation</span></div>
+            <div class="scenario-col"><span class="sc-label">Tool</span><span class="sc-val"><strong>M-Pesa</strong> history · till</span></div>
+            <div class="scenario-col"><span class="sc-label">Result</span><span class="sc-val">Resolved in <strong>&lt;5 min</strong>, client returned</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-item">
+        <div class="scenario-dot">📬</div>
+        <div class="scenario-card">
+          <div class="scenario-card-top">
+            <span class="scenario-company">Remote Work · Multi-client</span>
+            <span class="scenario-badge">Async · Slack</span>
+          </div>
+          <h3>Managing feedback loops across 3 simultaneous remote clients</h3>
+          <div class="scenario-body">
+            <p>Each client had different products, different SLAs, and different communication styles. I maintained separate Trello boards for open issues per client, routed product feedback to the right team channels, and ran weekly async summaries so nothing fell between the cracks. Never missed an SLA across any of the three.</p>
+          </div>
+          <div class="scenario-row">
+            <div class="scenario-col"><span class="sc-label">Skill</span><span class="sc-val">Multi-account management</span></div>
+            <div class="scenario-col"><span class="sc-label">Tool</span><span class="sc-val"><strong>Trello</strong> · Slack · Freshdesk</span></div>
+            <div class="scenario-col"><span class="sc-label">Result</span><span class="sc-val"><strong>Zero SLA misses</strong> across 3 clients</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal">What People Say</span>
+    <h2 class="reveal">5 stars. Every time.</h2>
+    <p class="section-sub reveal">Feedback from managers and remote clients across both in-person and digital environments.</p>
+    <div class="t-grid">
+      <div class="t-card reveal reveal-delay-1">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"She handled the busiest shifts without ever letting quality drop. Clients asked for her specifically — by name. That's not something you teach."</p>
+        <div class="t-author"><div class="t-avatar">MM</div><div><div class="t-name">MM Studio Management</div><div class="t-role">Nairobi, Kenya</div></div></div>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Our ticket backlog was embarrassing when she came on. It was gone in two days. She also flagged three product issues we didn't know existed. Exceptional."</p>
+        <div class="t-author"><div class="t-avatar">RC</div><div><div class="t-name">Remote Client</div><div class="t-role">E-commerce Platform Owner</div></div></div>
+      </div>
+      <div class="t-card reveal reveal-delay-3">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"The best CS person I've worked with. She caught an issue in our Mixpanel data before I'd even noticed a problem. Proactive, calm, and genuinely effective."</p>
+        <div class="t-author"><div class="t-avatar">CL</div><div><div class="t-name">Remote Client</div><div class="t-role">SaaS Business Owner</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <span class="section-eyebrow">Let's Talk</span>
+    <h2>I don't escalate.<br>I solve.</h2>
+    <p class="section-sub">Available immediately. Full time. Nairobi-based and remote-ready.</p>
+    <div class="contact-box">
+      <div class="c-items">
+        <div class="c-item"><div class="c-icon">📞</div><div><div class="c-label">Phone & WhatsApp</div><div class="c-value">0792 406 848</div></div></div>
+        <div class="c-item"><div class="c-icon">✉️</div><div><div class="c-label">Email</div><div class="c-value">nalaniellie@gmail.com</div></div></div>
+        <div class="c-item"><div class="c-icon">📍</div><div><div class="c-label">Location</div><div class="c-value">Ruaka, Nairobi — open to all Nairobi roles & full remote</div></div></div>
+      </div>
+      <div class="avail"><div class="status-dot"></div>Available Immediately — Full Time</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Kung'u Ellie Nalani</div>
+  <p>Customer Success Portfolio · Nairobi, Kenya · 2025</p>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+
+// Case study tabs
+function switchCase(i){
+  document.querySelectorAll('.case-tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.case-panel').forEach((p,j)=>p.classList.toggle('active',j===i));
+}
+
+// Gauge bars on load
+window.addEventListener('load',()=>{
+  setTimeout(()=>{document.querySelectorAll('.gauge-fill').forEach(el=>{el.style.width=el.dataset.w+'%'})},500);
+});
+
+// Intersection observer
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.scenario-item').forEach(el=>obs.observe(el));
+
+// Stagger skill cards
+document.querySelectorAll('.skill-card').forEach((el,i)=>{el.style.transitionDelay=(i*60)+'ms'});
+</script>
+</body>
+</html>
